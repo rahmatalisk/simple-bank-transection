@@ -29,12 +29,21 @@ document.getElementById('submit-withdraw').addEventListener('click',function(){
     //get previous amount
     const withdrawPreviousText = document.getElementById('withdraw-text').innerText;
     const withdrawPreviousAmount = parseFloat(withdrawPreviousText);
-    document.getElementById('withdraw-text').innerText = parseFloat(inputWithdarwAmount + withdrawPreviousAmount);
+    // document.getElementById('withdraw-text').innerText = parseFloat(inputWithdarwAmount + withdrawPreviousAmount);
 
     //main balance
     const mainBalance = parseFloat(document.getElementById('main-balance').innerText);
     const totalMainBalance = mainBalance - inputWithdarwAmount;
-    document.getElementById('main-balance').innerText =totalMainBalance;
+
+    
+    if(totalMainBalance < 0){
+        
+        alert('You have not Nedded Balance!!')
+    }else{
+        document.getElementById('main-balance').innerText =totalMainBalance;
+        document.getElementById('withdraw-text').innerText = parseFloat(inputWithdarwAmount + withdrawPreviousAmount);
+    }
+    
     //clear
     document.getElementById('input-withdraw').value = '';
 })
